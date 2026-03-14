@@ -115,7 +115,3 @@ src/
 2. Import the repo in [Vercel](https://vercel.com)
 3. Add `GROQ_API_KEY` in **Project Settings → Environment Variables**
 4. Deploy
-
-## License
-
-MIT
