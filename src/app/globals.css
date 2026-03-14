@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 6%;
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 6%;
+    --popover: 0 0% 97%;
+    --popover-foreground: 0 0% 6%;
+    --primary: 0 0% 6%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 6%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 0 0% 6%;
+    --radius: 0.5rem;
+
+    /* Theme-adaptive neon variables */
+    --neon-border:         rgba(0, 0, 0, 0.08);
+    --neon-border-hover:   rgba(0, 0, 0, 0.50);
+    --neon-shadow-hover:   rgba(0, 0, 0, 0.07);
+    --neon-text-glow:      rgba(0, 0, 0, 0.18);
+    --btn-primary-bg:      #0a0a0a;
+    --btn-primary-fg:      #ffffff;
+    --btn-primary-glow:    rgba(0, 0, 0, 0.30);
+    --btn-ghost-text:      #0a0a0a;
+    --btn-ghost-border:    rgba(0, 0, 0, 0.18);
+    --btn-ghost-border-hover: rgba(0, 0, 0, 0.65);
+    --dot-color:           rgba(0, 0, 0, 0.055);
+    --gradient-fade:       #f9f9f9;
+    --scrollbar-thumb:     rgba(0, 0, 0, 0.12);
+    --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 98%;
+
+    /* Theme-adaptive neon variables */
+    --neon-border:         rgba(255, 255, 255, 0.08);
+    --neon-border-hover:   rgba(255, 255, 255, 0.60);
+    --neon-shadow-hover:   rgba(255, 255, 255, 0.08);
+    --neon-text-glow:      rgba(255, 255, 255, 0.35);
+    --btn-primary-bg:      #ffffff;
+    --btn-primary-fg:      #000000;
+    --btn-primary-glow:    rgba(255, 255, 255, 0.40);
+    --btn-ghost-text:      #ffffff;
+    --btn-ghost-border:    rgba(255, 255, 255, 0.20);
+    --btn-ghost-border-hover: rgba(255, 255, 255, 0.80);
+    --dot-color:           rgba(255, 255, 255, 0.06);
+    --gradient-fade:       #000000;
+    --scrollbar-thumb:     rgba(255, 255, 255, 0.10);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Neon card — adapts to theme */
+  .neon-card {
+    border: 1px solid var(--neon-border);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .neon-card:hover {
+    border-color: var(--neon-border-hover);
+    box-shadow: 0 0 24px var(--neon-shadow-hover), 0 0 1px var(--neon-border-hover);
+  }
+
+  /* Neon glow */
+  .neon-glow {
+    box-shadow: 0 0 20px var(--neon-shadow-hover), 0 0 40px var(--neon-shadow-hover);
+  }
+
+  /* Neon text glow for headings */
+  .neon-text {
+    text-shadow: 0 0 40px var(--neon-text-glow);
+  }
+
+  /* Primary neon button */
+  .btn-neon {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+    border: 1px solid var(--btn-primary-bg);
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+  }
+  .btn-neon:hover {
+    box-shadow: 0 0 24px var(--btn-primary-glow), 0 0 48px var(--btn-primary-glow);
+    transform: translateY(-1px);
+  }
+  .btn-neon:active {
+    transform: translateY(0);
+  }
+
+  /* Ghost neon button */
+  .btn-neon-ghost {
+    background: transparent;
+    color: var(--btn-ghost-text);
+    border: 1px solid var(--btn-ghost-border);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-neon-ghost:hover {
+    border-color: var(--btn-ghost-border-hover);
+    box-shadow: 0 0 16px var(--neon-shadow-hover);
+  }
+}
+
+/* Dot grid background */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
